@@ -18,12 +18,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/cfhText"
+        android:id="@+id/chfText"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_marginTop="32dp"
         android:gravity="center_vertical"
-        android:text="CFH :"
+        android:text="CHF :"
         app:layout_constraintEnd_toEndOf="@+id/cadText"
         app:layout_constraintStart_toStartOf="@+id/cadText"
         app:layout_constraintTop_toBottomOf="@+id/cadText" />
@@ -35,9 +35,9 @@
         android:layout_marginTop="32dp"
         android:gravity="center_vertical"
         android:text="USD : "
-        app:layout_constraintEnd_toEndOf="@+id/cfhText"
-        app:layout_constraintStart_toStartOf="@+id/cfhText"
-        app:layout_constraintTop_toBottomOf="@+id/cfhText" />
+        app:layout_constraintEnd_toEndOf="@+id/chfText"
+        app:layout_constraintStart_toStartOf="@+id/chfText"
+        app:layout_constraintTop_toBottomOf="@+id/chfText" />
 
     <TextView
         android:id="@+id/jpyText"

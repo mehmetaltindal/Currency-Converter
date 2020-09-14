@@ -6,6 +6,9 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
+
+import org.json.JSONObject;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -13,11 +16,17 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
+    TextView tryText,usdText,cadText,chfText,jpyText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        tryText = findViewById(R.id.tryText);
+        jpyText = findViewById(R.id.jpyText);
+        cadText = findViewById(R.id.cadText);
+        usdText = findViewById(R.id.usdText);
+        chfText = findViewById(R.id.chfText);
     }
 
 
@@ -75,7 +84,33 @@ public class MainActivity extends AppCompatActivity {
             super.onPostExecute(s);
 
 
-            System.out.println("aldık mı?  " +  s);
+            //System.out.println("aldık mı?  " +  s);
+
+            try {
+
+                JSONObject jsonObject = new JSONObject(s);
+                String base = jsonObject.getString("base");
+                System.out.println("base : " + base);
+                String rates = jsonObject.getString("rates");
+                System.out.println("rates : " + rates);
+
+                JSONObject jsonObject2 = new JSONObject(rates);
+                String turkishLira = jsonObject2.getString("TRY");
+                String usd = jsonObject2.getString("USD");
+                String cad = jsonObject2.getString("CAD");
+                String chf = jsonObject2.getString("CHF");
+                String jpy = jsonObject2.getString("JPY");
+                //System.out.println("TRY : "+ turkishLira );
+
+                tryText.setText("TRY : "+ turkishLira);
+                usdText.setText("USD : "+usd);
+                cadText.setText("CAD : "+ cad);
+                chfText.setText("CHF : "+chf);
+                jpyText.setText("JPY : "+ jpy);
+
+            }catch (Exception e){
+
+            }
         }
     }
 }
